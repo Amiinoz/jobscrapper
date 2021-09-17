@@ -6,7 +6,7 @@ var logger = require("morgan");
 
 var indexRouter = require("./routes/index");
 
-const remoteJobsScraper = require("../remotejobs-scraper");
+const scrapper = require("../scrapper");
 
 //Start Scheduler
 require("../scheduler");
@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/jobs", (req, res, next) => {
   res.render("index", {
-    jobs: remoteJobsScraper.getJobs(),
+    jobs: scrapper.getJobs(),
   });
 });
 
